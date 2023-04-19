@@ -468,9 +468,6 @@ class QuizResult extends ContentEntityBase implements EntityOwnerInterface, Enti
     $query->addExpression('SUM(score_max)', 'sum_score_max');
     $query->addExpression('SUM(duration)', 'sum_duration');
     $query->groupBy('xapi.qid');
-    $query->groupBy('xapi.attempts');
-    $query->orderBy('xapi.attempts', 'DESC');
-    $query->range(0, 1);
     return $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
   }
 
