@@ -108,7 +108,7 @@ class QuizResultViewBuilder extends EntityViewBuilder {
           '#empty' => t('No data available'),
         ];
       } else {
-        $build['no_feedback_text']['#markup'] = $this->t('You have finished this @quiz.', ['@quiz' => QuizUtil::getQuizName()]);
+        $build['no_feedback_text']['#markup'] = $this->t('Error, no quiz data available!');
       }
     }
     // The visibility of feedback may change based on time or other conditions.
