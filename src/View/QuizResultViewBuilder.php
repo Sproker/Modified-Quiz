@@ -84,16 +84,20 @@ class QuizResultViewBuilder extends EntityViewBuilder {
     if (!Element::children($build)) {
       $data = $entity->getXAPIListenerStatements($account->id());
       $header = [
+        'attempts' => t('Number of attempt'),
         'score' => t('Score'),
-        'percentage' => t('Percentage')
+        'percentage' => t('Percentage'),
+        'duration' => t('Duration')
       ];
       if (!empty($data)) {
         $rows = [];
         foreach ($data as $statement) {
           $percentage = number_format($statement['sum_score_raw'] / $statement['sum_score_max'] * 100, 2) . '%';
           $rows[] = [
+            $statement['attempts'],
             $statement['sum_score_raw'],
             $percentage,
+            number_format($statement['sum_duration'], 2) . ' seconds',
           ];
         }
 
